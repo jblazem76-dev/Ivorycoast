@@ -74,8 +74,9 @@ You need permission to create app registrations in Entra ID and to assign roles
 on the resource group and registry (Owner or User Access Administrator). If a
 command is refused, ask whoever administers the subscription to run it.
 
-The container listens on **8080**. The workflow sets the app's ingress target
-port to 8080 on each deploy, so nothing needs to be changed in the portal.
+The container listens on **8080**. Before each deploy the workflow runs
+`az containerapp ingress update --target-port 8080`, so nothing needs to be
+changed in the portal. (This needs the Contributor role from the commands above.)
 
 Until those values exist, the `deploy` job fails with a message naming whatever
 is missing; the `build` job (image build and smoke test) runs regardless.
