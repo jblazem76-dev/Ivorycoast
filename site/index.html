@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IvoryCoast Advisory | Security &middot; GRC &middot; Compliance</title>
+    <style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+
+  :root {
+    --bg-deep: #f6f1e4;
+    --bg-panel: #ffffff;
+    --navy-line: #d9cdb0;
+    --navy-line-soft: #e4dac0;
+    --gold: #a9791c;
+    --gold-light: #9c7519;
+    --gold-dim: #8a6f24;
+    --teal: #1f5b4c;
+    --ivory: #172033;
+    --ivory-dim: #4b5468;
+    --slate: #5f5a4d;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  * , *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg-deep); }
+
+  .ica-page {
+    background: var(--bg-deep);
+    font-family: var(--font-body);
+    color: var(--ivory);
+  }
+
+.ica-hero {
+    --bg-deep: #f6f1e4;
+    --bg-panel: #ffffff;
+    --navy-line: #d9cdb0;
+    --navy-line-soft: #e4dac0;
+    --gold: #a9791c;
+    --gold-light: #9c7519;
+    --gold-dim: #8a6f24;
+    --teal: #1f5b4c;
+    --ivory: #172033;
+    --ivory-dim: #4b5468;
+    --slate: #5f5a4d;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 900px 600px at 50% -8%, #fdf8ec 0%, transparent 60%),
+      var(--bg-deep);
+    color: var(--ivory);
+    font-family: var(--font-body);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .ica-hero *, .ica-hero *::before, .ica-hero *::after { box-sizing: border-box; }
+
+  /* faint engraved guilloché texture, nods to the "gold trade" heritage / currency motif */
+  .ica-texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    pointer-events: none;
+    background-image:
+      repeating-radial-gradient(circle at 50% 42%, transparent 0px, transparent 38px, rgba(184,137,31,0.14) 39px, transparent 40px, transparent 78px);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 10%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, black 10%, transparent 72%);
+  }
+
+  .ica-hairline-top, .ica-hairline-bottom {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--navy-line) 20%, var(--navy-line) 80%, transparent);
+  }
+  .ica-hairline-top { top: 40px; }
+  .ica-hairline-bottom { bottom: 40px; }
+
+  .ica-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 108px 32px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ---- crest / medallion ---- */
+  .ica-medallion {
+    position: relative;
+    width: 216px;
+    height: 216px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 30px;
+  }
+  .ica-glow {
+    position: absolute;
+    inset: -34px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(201,162,39,0) 0%, rgba(201,162,39,0.28) 18%, rgba(201,162,39,0) 40%, rgba(47,122,104,0.2) 62%, rgba(201,162,39,0) 82%, rgba(201,162,39,0.28) 100%);
+    filter: blur(18px);
+    animation: ica-spin 22s linear infinite;
+  }
+  @keyframes ica-spin { to { transform: rotate(360deg); } }
+
+  .ica-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(169,121,28,0.5);
+  }
+  .ica-ring::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(169,121,28,0.22);
+  }
+  .ica-ring::after {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    border: 1px solid rgba(20,33,61,0.12);
+  }
+
+  .ica-mark {
+    position: relative;
+    width: 148px;
+    height: auto;
+    filter: drop-shadow(0 6px 18px rgba(20,33,61,0.22));
+  }
+
+  /* ---- wordmark / eyebrow ---- */
+  .ica-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 14px;
+  }
+  .ica-eyebrow span { color: var(--gold); }
+
+  .ica-wordmark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(30px, 5vw, 42px);
+    letter-spacing: 0.01em;
+    color: var(--ivory);
+    margin: 0 0 6px;
+  }
+  .ica-wordmark em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+
+  .ica-subline {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 48px;
+  }
+  .ica-subline i { color: var(--gold-dim); font-style: normal; margin: 0 10px; }
+
+  .ica-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+    max-width: 15ch;
+    margin: 0 0 26px;
+  }
+  .ica-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .ica-body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--ivory-dim);
+    max-width: 46ch;
+    margin: 0 0 40px;
+  }
+  .ica-body b { color: var(--ivory); font-weight: 600; }
+
+  .ica-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 76px;
+  }
+
+  .ica-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: #14213d;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+    padding: 13px 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 8px 20px -10px rgba(20,33,61,0.28);
+  }
+  .ica-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 14px 28px -10px rgba(20,33,61,0.35); }
+  .ica-btn-primary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .ica-btn-primary svg { width: 14px; height: 14px; }
+
+  .ica-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ivory-dim);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14.5px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy-line);
+    padding-bottom: 2px;
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+  .ica-btn-secondary:hover { color: var(--ivory); border-color: var(--gold-dim); }
+  .ica-btn-secondary:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* ---- credential / framework row : real content, not decoration ---- */
+  .ica-creds {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    border-top: 1px solid var(--navy-line-soft);
+    width: 100%;
+    max-width: 640px;
+  }
+  .ica-creds-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+  .ica-chip {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ivory-dim);
+    padding: 6px 13px;
+    border: 1px solid var(--navy-line);
+    border-radius: 2px;
+    background: rgba(184,137,31,0.06);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ica-glow { animation: none; }
+  }
+
+  @media (max-width: 560px) {
+    .ica-inner { padding: 84px 22px 48px; }
+    .ica-medallion { width: 168px; height: 168px; margin-bottom: 22px; }
+    .ica-mark { width: 112px; }
+    .ica-cta-row { flex-direction: column; gap: 16px; }
+    .ica-creds { gap: 12px; }
+    .ica-hairline-top { top: 24px; }
+    .ica-hairline-bottom { bottom: 24px; }
+  }
+
+
+  /* ── NAV ─────────────────────────────────────────────────── */
+  .ica-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(246, 241, 228, 0.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--navy-line-soft);
+  }
+  .ica-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+  }
+  .ica-nav-mark { width: 32px; height: auto; display: block; }
+  .ica-nav-word {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ivory);
+  }
+  .ica-nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .ica-nav-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .ica-nav-links a:hover { color: var(--gold-light); }
+
+  /* ── INTRO BAND ──────────────────────────────────────────── */
+  .ica-intro {
+    background: var(--bg-panel);
+    border-top: 1px solid var(--navy-line-soft);
+    border-bottom: 1px solid var(--navy-line-soft);
+    padding: 68px 32px;
+    text-align: center;
+  }
+  .ica-intro p {
+    max-width: 680px;
+    margin: 0 auto;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--ivory-dim);
+  }
+  .ica-intro b { color: var(--ivory); font-weight: 600; }
+
+  /* ── SECTION WRAPPER / LABEL ────────────────────────────── */
+  .ica-section {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 112px 32px;
+  }
+  .ica-section-label {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .ica-eyebrow-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 16px;
+  }
+  .ica-section-label h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--ivory);
+    margin: 0;
+    line-height: 1.25;
+  }
+  .ica-section-label h2 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .ica-rule {
+    width: 44px;
+    height: 1px;
+    background: var(--gold);
+    margin: 22px auto 0;
+  }
+
+  /* ── SERVICES GRID ───────────────────────────────────────── */
+  .ica-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .ica-services-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+    margin-top: 26px;
+  }
+  .ica-service-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--navy-line);
+    padding: 38px 30px 42px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .ica-service-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold-dim);
+    box-shadow: 0 24px 56px -28px rgba(20, 33, 61, 0.18);
+  }
+  .ica-service-ring {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    display: grid;
+    place-items: center;
+    margin-bottom: 24px;
+  }
+  .ica-service-ring svg {
+    width: 19px; height: 19px;
+    stroke: var(--gold-light);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .ica-service-card h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ivory);
+    margin: 0 0 17px;
+    line-height: 1.3;
+  }
+  .ica-service-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin: 0; padding: 0;
+  }
+  .ica-service-card li {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ivory-dim);
+    line-height: 1.6;
+    padding-left: 17px;
+    position: relative;
+  }
+  .ica-service-card li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+  }
+
+  /* ── WHY US / CREDENTIALS ────────────────────────────────── */
+  .ica-why {
+    position: relative;
+    background: var(--bg-deep);
+    border-top: 1px solid var(--navy-line-soft);
+    overflow: hidden;
+  }
+  .ica-why-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 112px 32px;
+  }
+  .ica-credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-bottom: 60px;
+  }
+  .ica-cred-item {
+    text-align: center;
+    border-left: 1px solid var(--navy-line);
+    padding-left: 22px;
+  }
+  .ica-cred-item:first-child { border-left: none; padding-left: 0; }
+  .ica-cred-number {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 40px);
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  .ica-cred-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    line-height: 1.65;
+  }
+  .ica-logos-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .ica-logos-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+
+  /* ── CTA ─────────────────────────────────────────────────── */
+  .ica-cta {
+    background: var(--bg-panel);
+    border-top: 1px solid var(--navy-line-soft);
+    text-align: center;
+    padding: 128px 32px;
+  }
+  .ica-cta .ica-eyebrow-label { justify-content: center; }
+  .ica-cta h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(30px, 4.5vw, 44px);
+    color: var(--ivory);
+    max-width: 17ch;
+    margin: 0 auto 26px;
+    line-height: 1.2;
+  }
+  .ica-cta h2 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .ica-cta > p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--ivory-dim);
+    max-width: 520px;
+    margin: 0 auto 44px;
+  }
+  .ica-cta-contact {
+    margin-top: 30px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ivory-dim);
+  }
+  .ica-cta-contact a {
+    color: var(--ivory-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy-line);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .ica-cta-contact a:hover { color: var(--gold-light); border-color: var(--gold-dim); }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  .ica-footer {
+    background: #ece4cd;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid var(--navy-line-soft);
+  }
+  .ica-footer-brand { display: flex; align-items: center; gap: 10px; }
+  .ica-footer-mark { width: 24px; height: auto; opacity: 0.92; }
+  .ica-footer-word {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: #6b5518;
+  }
+  .ica-footer p {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--slate);
+    margin: 0;
+  }
+
+  /* ── SCROLL FADE-IN ──────────────────────────────────────── */
+  .ica-fade {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .ica-fade.ica-visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE (page sections) ─────────────────────────── */
+  @media (max-width: 900px) {
+    .ica-services-grid { grid-template-columns: 1fr 1fr; }
+    .ica-credentials-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ica-nav { padding: 14px 22px; }
+    .ica-nav-links { display: none; }
+    .ica-section { padding: 84px 22px; }
+    .ica-services-grid, .ica-services-bottom { grid-template-columns: 1fr; }
+    .ica-credentials-grid { grid-template-columns: 1fr 1fr; }
+    .ica-cred-item { border-left: none; padding-left: 0; }
+    .ica-why-inner { padding: 84px 22px; }
+    .ica-cta { padding: 84px 22px; }
+    .ica-footer { flex-direction: column; text-align: center; padding: 28px 22px; }
+  }
+
+    </style>
+  </head>
+  <body>
+    <div class="ica-page">
+<!-- NAV -->
+<nav class="ica-nav">
+  <a href="#" class="ica-nav-brand">
+    <img class="ica-nav-mark" src="logo.png" alt="IvoryCoast Advisory crest" />
+    <span class="ica-nav-word">IvoryCoast Advisory</span>
+  </a>
+  <ul class="ica-nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- INTRO BAND -->
+<div class="ica-intro ica-fade">
+  <p>
+    <b>IvoryCoast Advisory LLC</b> is a specialized GRC consulting firm that
+    embeds security and compliance maturity into early-stage startups from
+    inception — not bolted on later at 10&times; the cost. We partner with
+    venture capital organizations, incubators, and founders to make security
+    a competitive advantage.
+  </p>
+</div>
+
+
+<div class="ica-hero">
+  <div class="ica-texture"></div>
+  <div class="ica-hairline-top"></div>
+  <div class="ica-hairline-bottom"></div>
+
+  <div class="ica-inner">
+    <div class="ica-medallion">
+      <div class="ica-glow"></div>
+      <div class="ica-ring"></div>
+      <img class="ica-mark" src="logo.png" alt="IvoryCoast Advisory crest — a geometric elephant head framed by a shield, tusks forming a checkmark" />
+    </div>
+
+    <p class="ica-eyebrow">Compliance <span>·</span> Governance <span>·</span> Protection</p>
+    <h1 class="ica-wordmark">IvoryCoast <em>Advisory</em></h1>
+    <p class="ica-subline">Security <i>/</i> Governance <i>/</i> Risk <i>/</i> Compliance</p>
+
+    <h2 class="ica-headline">Built for the pace of startups.<br /><em>Expected</em> by the enterprise.</h2>
+
+    <p class="ica-body">
+      IvoryCoast Advisory is a <b>Black-owned security, governance, risk &amp; compliance firm.</b>
+      We embed enterprise-grade GRC into high-growth startups and HR technology
+      organizations — before customers, investors, or auditors force the issue.
+    </p>
+
+    <div class="ica-cta-row">
+      <a class="ica-btn-primary" href="mailto:davidivor@ivorycoastadvisory.com">
+        Schedule a Call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
+      <a class="ica-btn-secondary" href="https://ivorycoastadvisory.com">ivorycoastadvisory.com</a>
+    </div>
+
+    <div class="ica-creds">
+      <p class="ica-creds-label">Assessments mapped to</p>
+      <span class="ica-chip">NIST CSF 2.0</span>
+      <span class="ica-chip">NIST RMF</span>
+      <span class="ica-chip">SOC 2</span>
+      <span class="ica-chip">ISO 27001</span>
+      <span class="ica-chip">CIS Controls v8</span>
+      <span class="ica-chip">HIPAA</span>
+    </div>
+  </div>
+</div>
+<!-- SERVICES -->
+<section class="ica-section" id="services">
+  <div class="ica-section-label ica-fade">
+    <p class="ica-eyebrow-label">What We Do</p>
+    <h2>Service Offerings</h2>
+    <div class="ica-rule"></div>
+  </div>
+
+  <div class="ica-services-grid">
+    <div class="ica-service-card ica-fade">
+      <div class="ica-service-ring">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+      </div>
+      <h3>VC Portfolio Security Program</h3>
+      <ul>
+        <li>Security maturity assessments across portfolio companies</li>
+        <li>Standardized GRC onboarding for new investments</li>
+        <li>Quarterly reviews &amp; tabletop exercises</li>
+        <li>Founder advisory hours, policies &amp; frameworks</li>
+      </ul>
+    </div>
+
+    <div class="ica-service-card ica-fade">
+      <div class="ica-service-ring">
+        <svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12M4 21h16M9 21v-6h6v6"/></svg>
+      </div>
+      <h3>Startup Security &amp; GRC Foundations</h3>
+      <ul>
+        <li>Baseline security maturity assessment</li>
+        <li>Foundational policies &amp; risk register</li>
+        <li>Secure architecture &amp; cloud configuration review</li>
+        <li>SOC 2 / ISO 27001 / HIPAA readiness roadmap</li>
+      </ul>
+    </div>
+
+    <div class="ica-service-card ica-fade">
+      <div class="ica-service-ring">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-4 4-2-1"/></svg>
+      </div>
+      <h3>Fractional CISO / Head of Security</h3>
+      <ul>
+        <li>Strategic security leadership &amp; roadmap</li>
+        <li>Board reporting &amp; vendor selection</li>
+        <li>Incident response oversight</li>
+        <li>Customer trust &amp; security marketing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ica-services-bottom">
+    <div class="ica-service-card ica-fade">
+      <div class="ica-service-ring">
+        <svg viewBox="0 0 24 24"><path d="M8 12l3 3 6-6M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/></svg>
+      </div>
+      <h3>Enterprise Deal Support</h3>
+      <ul>
+        <li>Respond to enterprise security questionnaires</li>
+        <li>Prepare for technical due diligence</li>
+        <li>Build trust with enterprise buyers</li>
+        <li>Close deals faster with security confidence</li>
+      </ul>
+    </div>
+
+    <div class="ica-service-card ica-fade">
+      <div class="ica-service-ring">
+        <svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 01-1-7.9A5 5 0 0115.9 8 4.5 4.5 0 0117 17H7z"/></svg>
+      </div>
+      <h3>Architecture &amp; Cloud Governance</h3>
+      <ul>
+        <li>Secure-by-design architecture advisory</li>
+        <li>Cloud governance &amp; DevOps pipeline security</li>
+        <li>IAM strategy &amp; data lifecycle planning</li>
+        <li>Encryption strategy &amp; resiliency design</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IVORYCOAST -->
+<div class="ica-why" id="why">
+  <div class="ica-texture"></div>
+  <div class="ica-why-inner">
+    <div class="ica-section-label ica-fade">
+      <p class="ica-eyebrow-label">The Difference</p>
+      <h2>Why IvoryCoast Advisory</h2>
+      <div class="ica-rule"></div>
+    </div>
+
+    <div class="ica-credentials-grid">
+      <div class="ica-cred-item ica-fade">
+        <span class="ica-cred-number">30</span>
+        <span class="ica-cred-label">Years Enterprise Security &amp; GRC Leadership</span>
+      </div>
+      <div class="ica-cred-item ica-fade">
+        <span class="ica-cred-number">$40M+</span>
+        <span class="ica-cred-label">ARR Influenced via Security-Led Pre-Sales</span>
+      </div>
+      <div class="ica-cred-item ica-fade">
+        <span class="ica-cred-number">43</span>
+        <span class="ica-cred-label">Mission-Critical Architectures Delivered</span>
+      </div>
+      <div class="ica-cred-item ica-fade">
+        <span class="ica-cred-number">CISSP</span>
+        <span class="ica-cred-label">Certified &middot; Former Sr. Audit Manager, AIG</span>
+      </div>
+    </div>
+
+    <p class="ica-logos-label">Prior Experience Includes</p>
+    <div class="ica-logos-row">
+      <span class="ica-chip">Smartsheet</span>
+      <span class="ica-chip">AIG</span>
+      <span class="ica-chip">Dollar Tree</span>
+      <span class="ica-chip">Accenture</span>
+      <span class="ica-chip">HP / EDS</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="ica-cta" id="contact">
+  <p class="ica-eyebrow-label">Get Started</p>
+  <h2>Ready to Build Security Into Your <em>Startup's DNA</em>?</h2>
+  <p>
+    David Ivor brings enterprise-grade security expertise to where you need
+    it most — early. Let's talk about where your company stands and what it
+    takes to get enterprise-ready.
+  </p>
+  <a class="ica-btn-primary" href="mailto:davidivor@ivorycoastadvisory.com">
+    Schedule a Free Consultation
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+  </a>
+  <p class="ica-cta-contact">
+    <a href="mailto:davidivor@ivorycoastadvisory.com">davidivor@ivorycoastadvisory.com</a>
+    &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+    <a href="https://ivorycoastadvisory.com">ivorycoastadvisory.com</a>
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer class="ica-footer">
+  <div class="ica-footer-brand">
+    <img class="ica-footer-mark" src="logo.png" alt="IvoryCoast Advisory crest" />
+    <span class="ica-footer-word">IvoryCoast Advisory LLC</span>
+  </div>
+  <p>Security &middot; Governance &middot; Risk &middot; Compliance &nbsp;|&nbsp; David Ivor, CISSP</p>
+  <p>&copy; 2026 IvoryCoast Advisory LLC. All rights reserved.</p>
+</footer>
+
+    </div>
+
+    <script>
+      const icaObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add('ica-visible'), i * 70);
+              icaObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.ica-fade').forEach((el) => icaObserver.observe(el));
+    </script>
+  </body>
+</html>
