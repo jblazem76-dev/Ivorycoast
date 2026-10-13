@@ -34,6 +34,15 @@ repository **variables** (Settings, Secrets and variables, Actions):
 | Variable | `AZURE_ACR_NAME`           | Registry name, without `.azurecr.io`               |
 | Variable | `AZURE_CONTAINER_APP_NAME` | Optional. Defaults to `ica-landing`                |
 
+Run this in Azure Cloud Shell (Bash). To find the two placeholder values:
+
+```bash
+# Resource group of the Container App, and the image it currently runs
+az containerapp list --query "[?name=='ica-landing'].{rg:resourceGroup, image:properties.template.containers[0].image}" -o table
+# Registries you can see (the image above starts with <registry-name>.azurecr.io)
+az acr list --query "[].{name:name, rg:resourceGroup}" -o table
+```
+
 Create the identity and grant it access:
 
 ```bash
@@ -57,8 +66,13 @@ az role assignment create --assignee "$APP_ID" --role AcrPush \
   --scope "$(az acr show -n "$ACR" --query id -o tsv)"
 
 echo "AZURE_CLIENT_ID=$APP_ID"
-az account show --query tenantId -o tsv   # AZURE_TENANT_ID
+echo "AZURE_TENANT_ID=$(az account show --query tenantId -o tsv)"
+echo "AZURE_SUBSCRIPTION_ID=$SUB"
 ```
+
+You need permission to create app registrations in Entra ID and to assign roles
+on the resource group and registry (Owner or User Access Administrator). If a
+command is refused, ask whoever administers the subscription to run it.
 
 The container listens on **8080**. The workflow sets the app's ingress target
 port to 8080 on each deploy, so nothing needs to be changed in the portal.
