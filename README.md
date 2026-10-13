@@ -56,7 +56,7 @@ az ad sp create --id "$APP_ID"
 az ad app federated-credential create --id "$APP_ID" --parameters '{
   "name": "github-main",
   "issuer": "https://token.actions.githubusercontent.com",
-  "subject": "repo:jblazem76-dev/Ivorycoast:ref:refs/heads/main",
+  "subject": "repo:jblazem76-dev@253388056/Ivorycoast@1415895114:ref:refs/heads/main",
   "audiences": ["api://AzureADTokenExchange"]
 }'
 
@@ -69,6 +69,13 @@ echo "AZURE_CLIENT_ID=$APP_ID"
 echo "AZURE_TENANT_ID=$(az account show --query tenantId -o tsv)"
 echo "AZURE_SUBSCRIPTION_ID=$SUB"
 ```
+
+The `subject` must match, character for character, what GitHub sends. For this
+repository GitHub includes the numeric owner and repository IDs (the `@253388056`
+and `@1415895114` parts), so the plain `repo:owner/name:...` form is rejected.
+If the deploy's "Log in to Azure" step ever fails with `AADSTS700213: No matching
+federated identity record found for presented assertion subject '...'`, the
+quoted subject is exactly what to put in a new federated credential.
 
 You need permission to create app registrations in Entra ID and to assign roles
 on the resource group and registry (Owner or User Access Administrator). If a
