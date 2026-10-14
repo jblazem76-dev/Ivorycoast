@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 808.00 726.00" width="808.00" height="726.00"><title>IvoryCoast Advisory crest</title><svg x="0" y="0" width="808.00" height="726" viewBox="216 16 808 726" overflow="visible"><defs>
+<g id="m4e"><path d="M222,122 L378,22 L512,82 L500,410 L490,416 L408,467 C330,440 250,350 225,250 Z" fill="#fff"/><path d="M470,131 L378,88 L268,148 C262,230 285,340 396,414" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><polygon points="302,287 374,242 336,318" fill="#000"/></g>
+<g id="m4t"><path d="M391,594 C425,556 478,515 502,433 L548,466 C536,505 520,532 497,551 C468,572 430,585 391,594 Z" fill="#fff"/><path d="M528,451 C514,494 490,534 453,556 C430,572 410,583 391,594" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round"/></g>
+<g id="m4h"><polygon points="470,131 540,61 620,61 620,640 586,619 556,480 552,470 497,417 490,418 500,372 451,238" fill="#fff"/><g fill="none" stroke="#000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><polyline points="540,61 607,61"/><polyline points="470,131 540,61"/><polyline points="607,61 555,124"/><polyline points="555,124 620,172"/><polyline points="470,131 555,124"/><polyline points="555,124 508,214"/><polyline points="508,214 451,238"/><polyline points="470,131 451,238 500,372 490,418"/><polyline points="508,214 550,275"/><polyline points="550,275 620,238"/><polyline points="550,275 500,372"/><polyline points="550,275 552,347 552,430 553,455 558,500 570,552 586,619"/><polyline points="552,347 620,317"/><polyline points="552,430 620,397"/><polyline points="497,417 552,470"/></g><polygon points="487,260 500,253 520,270 508,293" fill="#000"/></g>
+<mask id="m4k" maskUnits="userSpaceOnUse" x="180" y="-62" width="880" height="880">
+<use href="#m4e"/><use href="#m4e" transform="translate(1240 0) scale(-1 1)"/>
+<use href="#m4t"/><use href="#m4t" transform="translate(1240 0) scale(-1 1)"/>
+<rect x="619" y="61" width="2" height="579" fill="#fff"/>
+<use href="#m4h"/><use href="#m4h" transform="translate(1240 0) scale(-1 1)"/>
+<polyline points="607,61 633,61" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round"/>
+<polygon points="565,602 620,650 822,492 620,735 527,633" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/>
+<polygon points="565,602 620,650 620,735 527,633" fill="#fff"/>
+<polygon points="620,650 822,492 620,735" fill="#fff"/>
+<polyline points="620,650 620,735" fill="none" stroke="#000" stroke-width="8"/>
+</mask></defs><rect x="180" y="-62" width="880" height="880" fill="#172033" mask="url(#m4k)"/></svg></svg>
