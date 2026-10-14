@@ -24,7 +24,7 @@ always lowercase: `ivorycoastadvisory.com`. Not "Ivory Coast Advisory",
 | --- | --- |
 | Default, light grounds | `logo/svg/lockup-horizontal.svg` |
 | Narrow or square formats | `logo/svg/lockup-stacked.svg` |
-| Small spaces (no descriptor) | `logo/svg/lockup-compact.svg` |
+| Small spaces (no descriptor) | `logo/svg/lockup-compact.svg`; `lockup-compact-small.svg` (heavier line) for 200 to 300 px wide, e.g. the site nav |
 | Dark grounds | `logo/svg/lockup-horizontal-reversed.svg` (also `-compact`, `-stacked`) |
 | Single-ink print | `...-navy.svg` |
 | Reversed single ink | `...-white.svg` |

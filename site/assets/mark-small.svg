@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 808.00 726.00" width="808.00" height="726.00"><title>IvoryCoast Advisory crest</title><svg x="0" y="0" width="808.00" height="726" viewBox="216 16 808 726" overflow="visible">
+<defs>
+<linearGradient id="goldT" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3c372"/><stop offset=".55" stop-color="#c49a3a"/><stop offset="1" stop-color="#a47a22"/></linearGradient>
+<linearGradient id="goldArm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9b45a"/><stop offset="1" stop-color="#b78a2c"/></linearGradient>
+<linearGradient id="goldLong" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a47a22"/><stop offset=".5" stop-color="#c9a13f"/><stop offset="1" stop-color="#ecd28b"/></linearGradient>
+
+<g id="ear">
+<path d="M222,122 L378,22 L512,82 L500,410 L490,416 L408,467 C330,440 250,350 225,250 Z" fill="#1f3153"/>
+<path d="M470,131 L378,88 L268,148 C262,230 285,340 396,414 L452,350 L451,238 Z" fill="#2a4068"/>
+<path d="M378,88 L268,148 C262,230 285,340 396,414 Z" fill="#172540"/>
+<polygon points="302,287 374,242 336,318" fill="#2d625c"/>
+<path d="M470,131 L378,88 L268,148 C262,230 285,340 396,414" fill="none" stroke="#b9ae90" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
+<g id="tusk">
+<path d="M391,594 C425,556 478,515 502,433 L548,466 C536,505 520,532 497,551 C468,572 430,585 391,594 Z" fill="#172540"/>
+<path d="M391,594 C425,556 478,515 502,433 L528,451 C514,494 490,534 453,556 C430,572 410,583 391,594 Z" fill="url(#goldT)"/>
+<path d="M391,594 C425,556 478,515 502,433 L548,466 C536,505 520,532 497,551 C468,572 430,585 391,594 Z" fill="none" stroke="#b9ae90" stroke-width="13" stroke-linejoin="round"/>
+</g>
+
+<g id="fills">
+<polygon points="470,131 540,61 620,61 620,640 586,619 556,480 552,470 497,417 490,418 500,372 451,238" fill="#172540"/>
+<polygon points="470,131 555,124 508,214 451,238" fill="#223657"/>
+<polygon points="470,131 508,214 451,238" fill="#2d625c"/>
+<polygon points="470,131 540,61 607,61 555,124" fill="#223657"/>
+<polygon points="540,61 553,123 497,129" fill="#265650"/>
+<polygon points="555,124 607,61 620,61 620,172" fill="#2a4068"/>
+<polygon points="451,238 508,214 550,275 500,372" fill="#2d625c"/>
+<polygon points="550,275 500,372 490,418 497,417 552,470 552,430" fill="#172540"/>
+<polygon points="487,260 500,253 520,270 508,293" fill="#ddd5bc"/>
+<polygon points="500,253 520,270 508,293" fill="#a39b82"/>
+</g>
+
+<g id="lines" fill="none" stroke="#b9ae90" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="540,61 607,61"/>
+<polyline points="470,131 540,61"/>
+<polyline points="607,61 555,124"/>
+<polyline points="555,124 620,172"/>
+<polyline points="470,131 555,124"/>
+<polyline points="555,124 508,214"/>
+<polyline points="508,214 451,238"/>
+<polyline points="470,131 451,238 500,372 490,418"/>
+<polyline points="508,214 550,275"/>
+<polyline points="550,275 620,238"/>
+<polyline points="550,275 500,372"/>
+<polyline points="550,275 552,347 552,430 553,455 558,500 570,552 586,619"/>
+<polyline points="552,347 620,317"/>
+<polyline points="552,430 620,397"/>
+<polyline points="497,417 552,470"/>
+</g>
+</defs>
+
+<!-- ears, tusks (behind the head) -->
+<use href="#ear" xlink:href="#ear"/>
+<use href="#ear" xlink:href="#ear" transform="translate(1240 0) scale(-1 1)"/>
+<use href="#tusk" xlink:href="#tusk"/>
+<use href="#tusk" xlink:href="#tusk" transform="translate(1240 0) scale(-1 1)"/>
+
+<!-- head -->
+<rect x="619" y="61" width="2" height="579" fill="#172540"/>
+<use href="#fills" xlink:href="#fills"/>
+<use href="#fills" xlink:href="#fills" transform="translate(1240 0) scale(-1 1)"/>
+
+<!-- centre column: lit left (teal), shaded right (navy) -->
+<g>
+<polygon points="555,124 620,172 620,238 550,275 508,214" fill="#2d625c"/>
+<polygon points="550,275 620,238 620,317 552,347" fill="#2d625c"/>
+<polygon points="552,347 620,317 620,397 552,430" fill="#2d625c"/>
+<polygon points="552,430 620,397 620,640 586,619 556,480" fill="#142139"/>
+</g>
+<g transform="translate(1240 0) scale(-1 1)">
+<polygon points="555,124 620,172 620,238 550,275 508,214" fill="#223657"/>
+<polygon points="550,275 620,238 620,317 552,347" fill="#223657"/>
+<polygon points="552,347 620,317 620,397 552,430" fill="#223657"/>
+<polygon points="552,430 620,397 620,640 586,619 556,480" fill="#1d2e4d"/>
+</g>
+
+<!-- one uniform line network -->
+<use href="#lines" xlink:href="#lines"/>
+<use href="#lines" xlink:href="#lines" transform="translate(1240 0) scale(-1 1)"/>
+<polyline points="607,61 633,61" fill="none" stroke="#b9ae90" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- checkmark -->
+<polygon points="565,602 620,650 620,735 527,633" fill="url(#goldArm)"/>
+<polygon points="620,650 822,492 620,735" fill="url(#goldLong)"/>
+<polyline points="565,602 620,650 822,492" fill="none" stroke="#f1e3b1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></svg>

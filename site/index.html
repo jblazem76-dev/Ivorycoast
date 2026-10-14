@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IvoryCoast Advisory | Security &middot; GRC &middot; Compliance</title>
+    <link rel="icon" href="assets/icon-favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <style>
 
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -140,9 +143,8 @@
 
   .ica-mark {
     position: relative;
-    width: 148px;
+    width: 136px;
     height: auto;
-    filter: drop-shadow(0 6px 18px rgba(20,33,61,0.22));
   }
 
   /* ---- wordmark / eyebrow ---- */
@@ -293,7 +295,7 @@
   @media (max-width: 560px) {
     .ica-inner { padding: 84px 22px 48px; }
     .ica-medallion { width: 168px; height: 168px; margin-bottom: 22px; }
-    .ica-mark { width: 112px; }
+    .ica-mark { width: 104px; }
     .ica-cta-row { flex-direction: column; gap: 16px; }
     .ica-creds { gap: 12px; }
     .ica-hairline-top { top: 24px; }
@@ -321,14 +323,7 @@
     gap: 11px;
     text-decoration: none;
   }
-  .ica-nav-mark { width: 32px; height: auto; display: block; }
-  .ica-nav-word {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--ivory);
-  }
+  .ica-nav-logo { width: 200px; height: auto; display: block; }
   .ica-nav-links {
     display: flex;
     gap: 36px;
@@ -627,8 +622,7 @@
 <!-- NAV -->
 <nav class="ica-nav">
   <a href="#" class="ica-nav-brand">
-    <img class="ica-nav-mark" src="logo.png" alt="IvoryCoast Advisory crest" />
-    <span class="ica-nav-word">IvoryCoast Advisory</span>
+    <img class="ica-nav-logo" src="assets/lockup-compact-small.svg" alt="IvoryCoast Advisory" />
   </a>
   <ul class="ica-nav-links">
     <li><a href="#services">Services</a></li>
@@ -658,7 +652,7 @@
     <div class="ica-medallion">
       <div class="ica-glow"></div>
       <div class="ica-ring"></div>
-      <img class="ica-mark" src="logo.png" alt="IvoryCoast Advisory crest — a geometric elephant head framed by a shield, tusks forming a checkmark" />
+      <img class="ica-mark" src="assets/mark.svg" alt="IvoryCoast Advisory crest — a geometric elephant head framed by a shield, tusks forming a checkmark" />
     </div>
 
     <p class="ica-eyebrow">Compliance <span>·</span> Governance <span>·</span> Protection</p>
@@ -833,7 +827,7 @@
 <!-- FOOTER -->
 <footer class="ica-footer">
   <div class="ica-footer-brand">
-    <img class="ica-footer-mark" src="logo.png" alt="IvoryCoast Advisory crest" />
+    <img class="ica-footer-mark" src="assets/mark-small.svg" alt="IvoryCoast Advisory crest" />
     <span class="ica-footer-word">IvoryCoast Advisory LLC</span>
   </div>
   <p>Security &middot; Governance &middot; Risk &middot; Compliance &nbsp;|&nbsp; David Ivor, CISSP</p>
