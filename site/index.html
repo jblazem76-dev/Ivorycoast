@@ -121,89 +121,61 @@
   }
   @keyframes ica-spin { to { transform: rotate(360deg); } }
 
-  .ica-ring {
+  /* ---- medallion: a polished marble disc with the crest inlaid ----
+     Layers: marble disc (baked texture, gloss, soft bevel), crest as dark
+     glass with a starfield seen through it, and random sparkles. The marble
+     and starfield are baked into assets/fx/; sparkle timing is a few lines of
+     script at the end of the page. Motion stops under prefers-reduced-motion. */
+  .ica-disc {
     position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(169,121,28,0.5);
-  }
-  .ica-ring::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border-radius: 50%;
-    border: 1px solid rgba(169,121,28,0.22);
-  }
-  .ica-ring::after {
-    content: "";
-    position: absolute;
-    inset: -9px;
-    border-radius: 50%;
-    border: 1px solid rgba(20,33,61,0.12);
-  }
-
-  /* ---- crest lighting effect ----
-     Layers, back to front: sky lens, orbit ring (back arc), crest, starfield
-     seen through the crest, depth + gloss, rim light, shimmer, orbit ring
-     (front arc), anamorphic streaks. All motion is CSS and stops under
-     prefers-reduced-motion. The lighting is baked into assets/fx/ (rim.webp,
-     stars-*.svg, mark-fx.svg); the plain crest is assets/mark.svg. */
-  .ica-lens, .ica-flares {
-    position: absolute;
-    inset: 11px;
+    inset: 4px;
     border-radius: 50%;
     overflow: hidden;
     pointer-events: none;
+    background: #efe9dc url(assets/fx/marble.webp) center / cover no-repeat;
+    box-shadow:
+      0 28px 46px -20px rgba(23,32,51,0.5),
+      0 9px 18px -8px rgba(23,32,51,0.3),
+      inset 0 2px 2px rgba(255,255,255,0.9),
+      inset 0 -5px 12px rgba(120,98,58,0.34),
+      inset 0 0 0 1px rgba(168,138,78,0.3),
+      inset 0 0 26px rgba(90,70,35,0.14);
   }
-  .ica-lens { isolation: isolate; background: #060c24; }
-  .ica-sky {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(58% 52% at 50% 44%, rgba(76,128,255,0.62) 0%, rgba(40,86,222,0.3) 52%, transparent 78%),
-      radial-gradient(90% 70% at 84% 90%, rgba(104,158,255,0.95) 0%, rgba(46,92,224,0.8) 38%, transparent 74%),
-      radial-gradient(70% 60% at 8% 100%, rgba(255,150,170,0.32), transparent 70%),
-      linear-gradient(160deg, #050a20 0%, #0b1855 48%, #1a40c4 100%);
-  }
-  .ica-bokeh {
-    position: absolute;
-    inset: -6%;
-    background:
-      radial-gradient(circle at 24% 74%, rgba(255,190,210,0.55) 0, rgba(255,150,190,0.22) 14%, transparent 30%),
-      radial-gradient(circle at 72% 22%, rgba(255,170,90,0.32) 0, transparent 22%),
-      radial-gradient(circle at 88% 68%, rgba(150,200,255,0.42) 0, transparent 26%);
-    mix-blend-mode: screen;
-    filter: blur(7px);
-    animation: ica-breathe 11s ease-in-out infinite;
-  }
-  .ica-lens::before {
+  .ica-disc::before {   /* polished gloss: broad highlight, falloff, warm bounce light */
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 2;
-    opacity: 0.16;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background:
+      radial-gradient(70% 46% at 32% 14%, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.2) 55%, transparent 100%),
+      radial-gradient(circle at 80% 90%, rgba(255,214,150,0.26), transparent 46%),
+      linear-gradient(155deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0) 40%, rgba(70,52,22,0.18) 100%);
   }
-  .ica-lens::after {
+  .ica-disc::after {    /* soft specular glint near the upper-left edge */
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: 3;
+    left: 16%;
+    top: 9%;
+    width: 30%;
+    height: 11%;
     border-radius: 50%;
-    box-shadow: inset 0 0 30px 8px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,214,150,0.28);
+    background: radial-gradient(ellipse, rgba(255,255,255,0.85), rgba(255,255,255,0) 70%);
+    transform: rotate(-32deg);
+    filter: blur(1.5px);
   }
 
   .ica-crest {
     position: relative;
-    width: 64%;
+    width: 62%;
     aspect-ratio: 808 / 726;
   }
-  .ica-crest > * { position: absolute; }
-  .ica-mark { inset: 0; width: 100%; height: 100%; display: block; }
+  .ica-crest > * { position: absolute; inset: 0; }
+  .ica-inlay {          /* raised inlay: contact shadow under the crest */
+    filter: drop-shadow(0 1.5px 1px rgba(8,12,26,0.5)) drop-shadow(0 8px 10px rgba(8,12,26,0.28));
+  }
+  .ica-inlay > * { position: absolute; inset: 0; }
+  .ica-mark { width: 100%; height: 100%; display: block; }
 
-  .ica-stars, .ica-depth, .ica-gloss, .ica-shimmer {
-    inset: 0;
+  .ica-stars, .ica-depth, .ica-gloss {
     pointer-events: none;
     -webkit-mask: url(assets/fx/silhouette.svg) center / 100% 100% no-repeat;
     mask: url(assets/fx/silhouette.svg) center / 100% 100% no-repeat;
@@ -218,76 +190,38 @@
   .ica-gloss {
     mix-blend-mode: overlay;
     background:
-      linear-gradient(135deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0) 40%),
+      linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 36%),
       linear-gradient(315deg, rgba(120,170,255,0.22) 0%, transparent 42%);
   }
-  .ica-rim {
-    left: -5%;
-    top: -5%;
-    width: 110%;
-    height: 110%;
+
+  /* random sparkles: the script places a few at random points on the crest */
+  .ica-sparkles { pointer-events: none; }
+  .ica-spark {
+    position: absolute;
+    width: var(--s, 18px);
+    height: var(--s, 18px);
+    margin: calc(var(--s, 18px) / -2) 0 0 calc(var(--s, 18px) / -2);
+    opacity: 0;
     pointer-events: none;
     mix-blend-mode: screen;
-    animation: ica-rim-pulse 10s ease-in-out infinite;
+    background:
+      radial-gradient(circle, #fff 0 9%, var(--c, #fff3d2) 15%, rgba(255,230,170,0) 46%),
+      linear-gradient(90deg, transparent, var(--c, #fff3d2) 50%, transparent) center / 100% 8% no-repeat,
+      linear-gradient(0deg, transparent, var(--c, #fff3d2) 50%, transparent) center / 8% 100% no-repeat;
+    filter: drop-shadow(0 0 3px rgba(255,236,190,0.9));
   }
-  .ica-shimmer { overflow: hidden; mix-blend-mode: plus-lighter; }
-  .ica-shimmer i {
-    position: absolute;
-    top: -30%;
-    bottom: -30%;
-    left: 0;
-    width: 38%;
-    background: linear-gradient(100deg, transparent 0%, rgba(255,236,190,0) 30%, rgba(255,244,214,0.5) 46%, rgba(255,255,255,0.92) 50%, rgba(255,244,214,0.5) 54%, rgba(255,236,190,0) 70%, transparent 100%);
-    transform: translateX(-140%) skewX(-18deg);
-    animation: ica-sweep 10s cubic-bezier(0.45, 0.1, 0.3, 1) infinite;
-  }
-
-  .ica-orbit {
-    position: absolute;
-    inset: 11px;
-    width: calc(100% - 22px);
-    height: calc(100% - 22px);
-    overflow: hidden;
-    border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  .ica-orbit path { fill: none; stroke-linecap: round; }
-  .ica-orbit .o-bloom { stroke: url(#ica-ring-grad); stroke-width: 2.4; opacity: 0.55; filter: blur(1.1px); }
-  .ica-orbit .o-line { stroke: url(#ica-ring-grad); stroke-width: 0.34; opacity: 0.85; }
-  .ica-orbit .o-spark {
-    stroke: #fff6e0;
-    stroke-width: 0.6;
-    stroke-dasharray: 16 84;
-    filter: drop-shadow(0 0 1.2px rgba(255,190,110,0.95));
-    animation: ica-orbit-run 16s linear infinite;
-  }
-
-  .ica-streak {
-    position: absolute;
-    left: -10%;
-    width: 120%;
-    height: 2px;
-    border-radius: 2px;
-    mix-blend-mode: screen;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,120,30,0) 8%, rgba(255,150,50,0.9) 42%, #fff4d6 56%, rgba(255,170,70,0.5) 74%, transparent 100%);
-    box-shadow: 0 0 10px 2px rgba(255,130,40,0.5), 0 0 30px 8px rgba(255,110,30,0.26);
-    animation: ica-drift 13s ease-in-out infinite;
-  }
-  .ica-streak-1 { top: 34%; transform: rotate(-13deg); }
-  .ica-streak-2 { top: 61%; width: 92%; height: 1.5px; transform: rotate(-24deg); animation-duration: 17s; animation-delay: -6s; }
-  .ica-streak-3 { top: 40%; height: 20px; filter: blur(11px); opacity: 0.32; box-shadow: none; transform: rotate(-13deg); animation-duration: 11s; animation-delay: -3s; }
+  .ica-spark.on { animation: ica-glint var(--d, 1.4s) ease-in-out 1 both; }
 
   @keyframes ica-twinkle-a { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
   @keyframes ica-twinkle-b { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  @keyframes ica-breathe { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.1); opacity: 1; } }
-  @keyframes ica-drift { 0%, 100% { translate: -3% 0; opacity: 0.55; } 50% { translate: 3% 0; opacity: 1; } }
-  @keyframes ica-rim-pulse { 0%, 45%, 100% { opacity: 0.82; } 66% { opacity: 1; } }
-  @keyframes ica-sweep { 0%, 40% { transform: translateX(-140%) skewX(-18deg); } 72%, 100% { transform: translateX(300%) skewX(-18deg); } }
-  @keyframes ica-orbit-run { to { stroke-dashoffset: -100; } }
+  @keyframes ica-glint {
+    0% { opacity: 0; transform: scale(0.15) rotate(0deg); }
+    35% { opacity: 1; transform: scale(1) rotate(14deg); }
+    100% { opacity: 0; transform: scale(0.25) rotate(38deg); }
+  }
 
   @supports not ((mask: url(x)) or (-webkit-mask: url(x))) {
-    .ica-stars, .ica-depth, .ica-gloss, .ica-shimmer { display: none; }
+    .ica-stars, .ica-depth, .ica-gloss { display: none; }
   }
 
   /* ---- wordmark / eyebrow ---- */
@@ -432,8 +366,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ica-glow, .ica-bokeh, .ica-stars, .ica-rim, .ica-streak, .ica-orbit .o-spark { animation: none; }
-    .ica-shimmer { display: none; }
+    .ica-glow, .ica-stars { animation: none; }
+    .ica-sparkles { display: none; }
   }
 
   @media (max-width: 560px) {
@@ -794,44 +728,16 @@
   <div class="ica-inner">
     <div class="ica-medallion">
       <div class="ica-glow"></div>
-      <div class="ica-ring"></div>
-      <div class="ica-lens" aria-hidden="true"><span class="ica-sky"></span><span class="ica-bokeh"></span></div>
-      <svg class="ica-orbit" viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <linearGradient id="ica-ring-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#ff7a1e" stop-opacity="0"/>
-            <stop offset="0.28" stop-color="#ff9a3c"/>
-            <stop offset="0.55" stop-color="#fff1d0"/>
-            <stop offset="0.8" stop-color="#ffb35a"/>
-            <stop offset="1" stop-color="#ff7a1e" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <g transform="rotate(-16 50 66)">
-          <path class="o-bloom" d="M6 66 A44 9.5 0 0 1 94 66"/>
-          <path class="o-line" d="M6 66 A44 9.5 0 0 1 94 66"/>
-          <path class="o-spark" pathLength="100" d="M6 66 A44 9.5 0 0 1 94 66"/>
-        </g>
-      </svg>
+      <div class="ica-disc" aria-hidden="true"></div>
       <div class="ica-crest">
-        <img class="ica-mark" src="assets/fx/mark-fx.svg" alt="IvoryCoast Advisory crest — a geometric elephant head framed by a shield, tusks forming a checkmark" />
-        <span class="ica-stars ica-stars-a" aria-hidden="true"></span>
-        <span class="ica-stars ica-stars-b" aria-hidden="true"></span>
-        <span class="ica-depth" aria-hidden="true"></span>
-        <span class="ica-gloss" aria-hidden="true"></span>
-        <img class="ica-rim" src="assets/fx/rim.webp" alt="" aria-hidden="true" />
-        <span class="ica-shimmer" aria-hidden="true"><i></i></span>
-      </div>
-      <svg class="ica-orbit" viewBox="0 0 100 100" aria-hidden="true">
-        <g transform="rotate(-16 50 66)">
-          <path class="o-bloom" d="M6 66 A44 9.5 0 0 0 94 66"/>
-          <path class="o-line" d="M6 66 A44 9.5 0 0 0 94 66"/>
-          <path class="o-spark" pathLength="100" d="M6 66 A44 9.5 0 0 0 94 66" style="animation-delay:-8s"/>
-        </g>
-      </svg>
-      <div class="ica-flares" aria-hidden="true">
-        <span class="ica-streak ica-streak-3"></span>
-        <span class="ica-streak ica-streak-1"></span>
-        <span class="ica-streak ica-streak-2"></span>
+        <div class="ica-inlay">
+          <img class="ica-mark" src="assets/fx/mark-fx.svg" alt="IvoryCoast Advisory crest — a geometric elephant head framed by a shield, tusks forming a checkmark" />
+          <span class="ica-stars ica-stars-a" aria-hidden="true"></span>
+          <span class="ica-stars ica-stars-b" aria-hidden="true"></span>
+          <span class="ica-depth" aria-hidden="true"></span>
+          <span class="ica-gloss" aria-hidden="true"></span>
+        </div>
+        <div class="ica-sparkles" aria-hidden="true"></div>
       </div>
     </div>
 
@@ -1029,6 +935,57 @@
         { threshold: 0.12 }
       );
       document.querySelectorAll('.ica-fade').forEach((el) => icaObserver.observe(el));
+    </script>
+    <script>
+      /* Random sparkles on the crest. The silhouette is sampled once so every
+         sparkle lands on the elephant; each one fires, fades, waits a random
+         time and fires somewhere else. Paused while off-screen or hidden. */
+      (function () {
+        var host = document.querySelector('.ica-sparkles');
+        if (!host || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var COLORS = ['#fff6dc', '#ffe3a0', '#ffffff', '#cfe0ff', '#ffd9a8'];
+        var onScreen = true, pts = [];
+        new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; }).observe(host);
+        var img = new Image();
+        img.onload = function () {
+          var W = 160, H = Math.round(W * 726 / 808), c = document.createElement('canvas');
+          c.width = W; c.height = H;
+          var ctx = c.getContext('2d');
+          ctx.drawImage(img, 0, 0, W, H);
+          try {
+            var d = ctx.getImageData(0, 0, W, H).data;
+            for (var j = 0; j < H; j++) for (var i = 0; i < W; i++) {
+              if (d[(j * W + i) * 4 + 3] > 200) pts.push([i / W * 100, j / H * 100]);
+            }
+          } catch (err) { return; }
+          if (!pts.length) return;
+          for (var n = 0; n < 9; n++) spark(n);
+        };
+        img.src = 'assets/fx/silhouette.svg';
+        function rnd(a, b) { return a + Math.random() * (b - a); }
+        function spark(n) {
+          var el = document.createElement('i');
+          el.className = 'ica-spark';
+          host.appendChild(el);
+          function fire() {
+            if (document.hidden || !onScreen) { setTimeout(fire, 1200); return; }
+            var p = pts[Math.floor(Math.random() * pts.length)];
+            el.classList.remove('on');
+            el.style.left = p[0] + '%';
+            el.style.top = p[1] + '%';
+            el.style.setProperty('--s', rnd(10, 26).toFixed(1) + 'px');
+            el.style.setProperty('--d', rnd(0.9, 1.9).toFixed(2) + 's');
+            el.style.setProperty('--c', COLORS[Math.floor(Math.random() * COLORS.length)]);
+            void el.offsetWidth;
+            el.classList.add('on');
+          }
+          el.addEventListener('animationend', function () {
+            el.classList.remove('on');
+            setTimeout(fire, rnd(250, 2600));
+          });
+          setTimeout(fire, rnd(0, 2400) + n * 120);
+        }
+      })();
     </script>
   </body>
 </html>

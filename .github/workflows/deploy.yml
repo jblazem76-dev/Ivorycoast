@@ -31,7 +31,7 @@ jobs:
           curl -fsSI http://localhost:8080/assets/mark.svg | grep -qi "content-type: image/svg+xml"
           curl -fsSI http://localhost:8080/assets/lockup-compact-small.svg | grep -qi "content-type: image/svg+xml"
           curl -fsSI http://localhost:8080/favicon.ico | grep -qi "200 OK"
-          curl -fsSI http://localhost:8080/assets/fx/rim.webp | grep -qi "content-type: image/webp"
+          curl -fsSI http://localhost:8080/assets/fx/marble.webp | grep -qi "content-type: image/webp"
           curl -fsSI http://localhost:8080/assets/fx/stars-a.svg | grep -qi "content-type: image/svg+xml"
 
   deploy:
