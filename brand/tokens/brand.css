@@ -1,0 +1,33 @@
+/* IvoryCoast Advisory brand tokens. Reference: brand/README.md */
+:root {
+  /* Core */
+  --ica-ink: #172033;          /* Ink Navy: text, dark grounds, wordmark */
+  --ica-gold: #a9791c;         /* Heritage Gold: accents, rules, buttons, large type */
+  --ica-ivory: #f6f1e4;        /* Ivory: the page */
+
+  /* Secondary and neutrals */
+  --ica-emerald: #1f5b4c;      /* labels, eyebrows */
+  --ica-slate: #4b5468;        /* body text */
+  --ica-gold-antique: #9c7519; /* "Advisory" in the logo, numerals */
+  --ica-bronze: #7a5e14;       /* small gold-toned text (5.4:1 on ivory) */
+  --ica-stone: #5f5a4d;        /* captions, metadata */
+  --ica-parchment: #d9cdb0;    /* rules and borders */
+  --ica-mist: #e4dac0;         /* soft rules */
+  --ica-paper: #ffffff;        /* cards */
+  --ica-gold-light: #d8b15a;   /* gold on dark grounds */
+
+  /* Type */
+  --ica-font-display: 'Fraunces', Georgia, serif;
+  --ica-font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --ica-font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Shape */
+  --ica-radius: 3px;
+  --ica-radius-chip: 2px;
+}
+
+/* Display text is drawn at optical size 36 to match the logo. */
+.ica-display {
+  font-family: var(--ica-font-display);
+  font-variation-settings: 'opsz' 36;
+}

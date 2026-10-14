@@ -1,0 +1,27 @@
+{
+  "name": "IvoryCoast Advisory",
+  "version": "1.0",
+  "colors": {
+    "ink":           { "hex": "#172033", "rgb": [23, 32, 51],    "cmyk": [55, 37, 0, 80],  "role": "Text, dark grounds, wordmark" },
+    "gold":          { "hex": "#A9791C", "rgb": [169, 121, 28],  "cmyk": [0, 28, 83, 34],  "role": "Accents, rules, buttons, large type" },
+    "ivory":         { "hex": "#F6F1E4", "rgb": [246, 241, 228], "cmyk": [0, 2, 7, 4],     "role": "The page" },
+    "emerald":       { "hex": "#1F5B4C", "rgb": [31, 91, 76],    "cmyk": [66, 0, 16, 64], "role": "Labels, eyebrows" },
+    "slate":         { "hex": "#4B5468", "rgb": [75, 84, 104],   "cmyk": [28, 19, 0, 59],  "role": "Body text" },
+    "goldAntique":   { "hex": "#9C7519", "rgb": [156, 117, 25],  "cmyk": [0, 25, 84, 39],  "role": "Advisory in the logo, numerals" },
+    "bronze":        { "hex": "#7A5E14", "rgb": [122, 94, 20],   "cmyk": [0, 23, 84, 52],  "role": "Small gold-toned text" },
+    "stone":         { "hex": "#5F5A4D", "rgb": [95, 90, 77],    "cmyk": [0, 5, 19, 63],   "role": "Captions, metadata" },
+    "parchment":     { "hex": "#D9CDB0", "rgb": [217, 205, 176], "cmyk": [0, 6, 19, 15],   "role": "Rules and borders" },
+    "mist":          { "hex": "#E4DAC0", "rgb": [228, 218, 192], "cmyk": [0, 4, 16, 11],   "role": "Soft rules" },
+    "paper":         { "hex": "#FFFFFF", "rgb": [255, 255, 255], "cmyk": [0, 0, 0, 0],     "role": "Cards" },
+    "goldLight":     { "hex": "#D8B15A", "rgb": [216, 177, 90],  "cmyk": [0, 18, 58, 15],  "role": "Gold on dark grounds" }
+  },
+  "fonts": {
+    "display": { "family": "Fraunces", "weights": [400, 500, 600], "italic": [400, 500], "opticalSize": 36, "license": "SIL Open Font License" },
+    "body":    { "family": "IBM Plex Sans", "weights": [400, 500, 600], "license": "SIL Open Font License" },
+    "mono":    { "family": "IBM Plex Mono", "weights": [400, 500], "license": "SIL Open Font License" }
+  },
+  "logo": {
+    "clearSpace": "X = cap height of the I in IvoryCoast (lockups); X = 1/4 crest width (crest alone)",
+    "minimumWidthPx": { "lockupHorizontal": 360, "lockupCompact": 200, "lockupStacked": 280, "crest": 48, "crestSmall": 24, "favicon": 16 }
+  }
+}
