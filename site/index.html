@@ -694,6 +694,11 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .ica-fade.ica-visible { opacity: 1; transform: none; }
+  /* Reduced motion: no reveal, content is simply there. Keep this after the
+     rules above; at equal specificity the later rule wins. */
+  @media (prefers-reduced-motion: reduce) {
+    .ica-fade { opacity: 1; transform: none; transition: none; }
+  }
 
   /* ── RESPONSIVE (page sections) ─────────────────────────── */
   @media (max-width: 900px) {
@@ -713,6 +718,8 @@
   }
 
     </style>
+    <!-- Without JavaScript nothing adds .ica-visible, so show the blocks as they are. -->
+    <noscript><style>.ica-fade { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body>
     <div class="ica-page">
