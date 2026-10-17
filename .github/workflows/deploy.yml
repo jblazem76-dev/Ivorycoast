@@ -31,6 +31,8 @@ jobs:
           curl -fsSI http://localhost:8080/assets/mark.svg | grep -qi "content-type: image/svg+xml"
           curl -fsSI http://localhost:8080/assets/lockup-compact-small.svg | grep -qi "content-type: image/svg+xml"
           curl -fsSI http://localhost:8080/favicon.ico | grep -qi "200 OK"
+          curl -fsSI http://localhost:8080/site.webmanifest | grep -qi "200 OK"
+          curl -fsSI http://localhost:8080/assets/og-image-1200x630.png | grep -qi "content-type: image/png"
           curl -fsSI http://localhost:8080/assets/fx/marble.webp | grep -qi "content-type: image/webp"
           curl -fsSI http://localhost:8080/assets/fx/stars-a.svg | grep -qi "content-type: image/svg+xml"
 

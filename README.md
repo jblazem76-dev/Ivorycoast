@@ -5,8 +5,10 @@ Azure Container App `ica-landing` on every push to `main`.
 
 ```
 site/index.html   the page (HTML + CSS + a small inline script)
-site/assets/      logo SVGs (nav lockup, crest) and favicon images
+site/assets/      logo SVGs (nav lockup, crest), favicon and app icons, and the
+                  link-preview image (og-image-1200x630.png)
 site/favicon.ico  favicon fallback
+site/site.webmanifest   web app manifest (name, theme color, app icons)
 brand/            full logo set, tokens and brand quick reference
 nginx.conf        listens on 8080, /healthz endpoint, security headers
 Dockerfile        nginx-unprivileged image with site/ and nginx.conf
